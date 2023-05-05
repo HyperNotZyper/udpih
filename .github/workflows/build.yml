@@ -11,6 +11,8 @@ jobs:
         submodules: recursive
     - name: Build pico
       run: |
+        sudo apt update -y
+        sudo apt upgrade -y
         docker build -t udpihbuilder .
         docker run --rm -v ${PWD}:/project udpihbuilder make pico
     - uses: actions/upload-artifact@v3
